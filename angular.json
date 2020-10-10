@@ -126,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "protor-ui"
+    }
+  },
+  "defaultProject": "protor-ui",
+  "cli": {
+    "analytics": false
+  }
 }
