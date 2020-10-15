@@ -1,0 +1,51 @@
+<table
+  [class.loading]="isLoading"
+  mat-table
+  [dataSource]="isLoading ? fakeItems.items : pagedItems.items"
+  matSort
+  (matSortChange)="sortData($event)"
+>
+  <!-- Name column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Created by column -->
+  <ng-container matColumnDef="createdBy">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Created by</th>
+    <td mat-cell *matCellDef="let element">{{ element.createdBy }}</td>
+  </ng-container>
+
+  <!-- Created on column -->
+  <ng-container matColumnDef="createdOn">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Created on</th>
+    <td mat-cell *matCellDef="let element">{{ element.createdOn | date }}</td>
+  </ng-container>
+
+  <!-- View schemas -->
+  <ng-container matColumnDef="viewSchemas">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="viewSchemasClicked(element.id)">Schemas</button>
+    </td>
+  </ng-container>
+
+  <!-- View schemas -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="warn" (click)="deleteGroupClicked(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator
+  [length]="pagedItems.totalCount"
+  [pageSizeOptions]="[10, 20, 50]"
+  [pageIndex]="currentState.paginationState.page"
+  [pageSize]="currentState.paginationState.size"
+  (page)="pageChanged($event)">
+</mat-paginator>

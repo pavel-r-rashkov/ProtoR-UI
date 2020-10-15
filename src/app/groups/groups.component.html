@@ -1,1 +1,14 @@
-<p>groups works!</p>
+<button
+  mat-raised-button
+  color="primary"
+  (click)="openGroupDialog()"
+>
+  New Group
+</button>
+
+<app-group-list
+  [pagedItems]="pagedItems"
+  (stateChange)="gridStateChanged($event)"
+  (viewSchemasClick)="viewSchemas($event)"
+  (deleteClick)="deleteGroupClicked($event)">
+</app-group-list>

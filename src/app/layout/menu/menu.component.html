@@ -1,0 +1,18 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [opened]="true"
+  >
+    <div class="sidenav-menu">
+      <app-menu-item [link]="'/groups'">Groups</app-menu-item>
+      <app-menu-item [link]="'/configuration'">Configuration</app-menu-item>
+      <app-menu-item [link]="'/users'">Users</app-menu-item>
+      <app-menu-item [link]="'/clients'">Clients</app-menu-item>
+      <app-menu-item [link]="'/roles'">Roles</app-menu-item>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
