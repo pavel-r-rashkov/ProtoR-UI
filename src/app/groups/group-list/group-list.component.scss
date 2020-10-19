@@ -9,28 +9,3 @@ table {
 .mat-column-delete {
   width: 100px;
 }
-
-.loading {
-  .mat-cell {
-    position: relative;
-    text-indent: 200%;
-    overflow: hidden;
-    white-space: nowrap;
-
-    &:before {
-      display: block;
-      content: '';
-      height: 20px;
-      position: absolute;
-      left: 0;
-      right: 24px;
-      top: 14px;
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.06);
-    }
-
-    &:first-child:before {
-      left: 24px;
-    }
-  }
-}

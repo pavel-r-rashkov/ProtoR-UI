@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Version {{ data.schema.version }} ({{ data.groupName }})</h1>
+<div class="mat-dialog-content">
+  <ngx-monaco-editor
+    [options]="editorOptions"
+    [(ngModel)]="data.schema.contents"
+    class="editor">
+  </ngx-monaco-editor>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</div>

@@ -25,7 +25,7 @@ export class GroupsService {
     //return timer(1500).pipe(mergeMap(e => throwingObservable));
   }
 
-  deleteGroup(groupId: number): Observable<any> {
+  deleteGroup(groupName: string): Observable<any> {
     return of({}).pipe(delay(1500));
   }
 }

@@ -1,1 +1,13 @@
-<p>schemas works!</p>
+<button
+  mat-raised-button
+  color="primary"
+  (click)="openCreateSchemaDialog()"
+>
+  New Schema
+</button>
+
+<app-schema-list
+  [pagedItems]="pagedItems"
+  (stateChange)="gridStateChanged($event)"
+  (viewSchemaClick)="viewSchema($event)">
+</app-schema-list>

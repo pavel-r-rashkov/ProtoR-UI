@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SchemasComponent } from './schemas.component';
 
 const routes: Routes = [
-  { path: '/{groupId}', component: SchemasComponent }
+  { path: '', component: SchemasComponent }
 ];
 
 @NgModule({

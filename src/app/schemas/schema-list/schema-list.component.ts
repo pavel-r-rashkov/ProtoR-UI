@@ -1,24 +1,23 @@
-import { Component, Input, Output, EventEmitter, SimpleChanges, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@angular/core';
 
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 
-import { PagedGrid, GridState, SortState, generateFakeItems } from '@shared';
-import { GroupListItem } from './group-list-item';
+import { PagedGrid, GridState, generateFakeItems, SortState } from '@shared';
+import { SchemaListItem } from './schema-list-item';
 
 @Component({
-  selector: 'app-group-list',
-  templateUrl: './group-list.component.html',
-  styleUrls: ['./group-list.component.scss']
+  selector: 'app-schema-list',
+  templateUrl: './schema-list.component.html',
+  styleUrls: ['./schema-list.component.scss']
 })
-export class GroupListComponent implements OnInit {
-  @Input() pagedItems: PagedGrid<GroupListItem> = new PagedGrid<GroupListItem>();
+export class SchemaListComponent implements OnInit {
+  @Input() pagedItems: PagedGrid<SchemaListItem> = new PagedGrid<SchemaListItem>();
   @Output() stateChange: EventEmitter<GridState> = new EventEmitter<GridState>();
-  @Output() viewSchemasClick: EventEmitter<string> = new EventEmitter<string>();
-  @Output() deleteClick: EventEmitter<string> = new EventEmitter<string>();
-  displayedColumns: string[] = ['name', 'createdOn', 'createdBy', 'viewSchemas', 'delete'];
+  @Output() viewSchemaClick: EventEmitter<SchemaListItem> = new EventEmitter<SchemaListItem>();
+  displayedColumns: string[] = ['version', 'createdOn', 'createdBy', 'viewSchema'];
   isLoading: boolean = true;
-  fakeItems: PagedGrid<GroupListItem> = generateFakeItems<GroupListItem>();
+  fakeItems: PagedGrid<SchemaListItem> = generateFakeItems<SchemaListItem>();
   currentState: GridState = this.initialState();
 
   ngOnInit(): void {
@@ -58,12 +57,8 @@ export class GroupListComponent implements OnInit {
     this.stateChange.emit(this.currentState);
   }
 
-  viewSchemasClicked(groupName: string): void {
-    this.viewSchemasClick.emit(groupName);
-  }
-
-  deleteGroupClicked(groupName: string): void {
-    this.deleteClick.emit(groupName);
+  viewSchemaClicked(item: SchemaListItem): void {
+    this.viewSchemaClick.emit(item);
   }
 
   resetGrid(): void {
@@ -74,7 +69,7 @@ export class GroupListComponent implements OnInit {
   private initialState(): GridState {
     return {
       paginationState: { page: 1, size: 10 },
-      sortState: [{ field: 'name', direction: 'asc' }],
+      sortState: [],
     };
   }
 }

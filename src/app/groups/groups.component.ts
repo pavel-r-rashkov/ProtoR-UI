@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 import { GridState, PagedGrid, ConfirmationPopupComponent } from '@shared';
 import { GroupsService, PagedResult, Group } from '@core';
-import { GroupListItem } from './group-list-item';
+import { GroupListItem } from './group-list/group-list-item';
 import { CreateGroupPopupComponent } from './create-group-popup/create-group-popup.component';
 import { GroupForm } from './group-form/group-form';
 import { GroupListComponent } from './group-list/group-list.component';
@@ -62,27 +62,29 @@ export class GroupsComponent implements OnDestroy {
     this.subscription.add(dialogSubscription);
   }
 
-  viewSchemas(groupId: number): void {
-    this.router.navigate(['schemas', { groupId }]);
+  viewSchemas(groupName: string): void {
+    this.router.navigate(['schemas', { group: groupName }]);
   }
 
-  deleteGroupClicked(groupId: number): void {
+  deleteGroupClicked(groupName: string): void {
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       width: '550px',
     });
 
-    const subscription = dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      if (confirmed) {
-        this.deleteGroup(groupId);
-      }
-    });
+    const subscription = dialogRef
+      .afterClosed()
+      .subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.deleteGroup(groupName);
+        }
+      });
 
     this.subscription.add(subscription);
   }
 
-  private deleteGroup(groupId: number): void {
+  private deleteGroup(groupName: string): void {
     const subscription = this.groupsService
-      .deleteGroup(groupId)
+      .deleteGroup(groupName)
       .subscribe(
         () => {
           this.groupList?.resetGrid();
