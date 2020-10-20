@@ -1,0 +1,22 @@
+mat-radio-button {
+  margin-right: 15px;
+}
+
+.rule-form {
+  display: flex;
+  align-items: center;
+}
+
+.rule-code {
+  display: inline-block;
+  width: 70px;
+}
+
+.rule-description {
+  display: inline-block;
+  width: 450px;
+}
+
+mat-radio-group {
+  white-space: nowrap;
+}

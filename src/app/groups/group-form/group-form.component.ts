@@ -35,7 +35,7 @@ import { VALIDATION_MESSAGES } from './messages';
       provide: MESSAGES_TOKEN,
       useValue: VALIDATION_MESSAGES
     },
-  ]
+  ],
 })
 export class GroupFormComponent implements OnDestroy, ControlValueAccessor, Validator {
   form: FormGroup;

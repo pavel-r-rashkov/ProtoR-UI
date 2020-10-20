@@ -66,6 +66,10 @@ export class GroupsComponent implements OnDestroy {
     this.router.navigate(['schemas', { group: groupName }]);
   }
 
+  viewConfiguration(groupName: string): void {
+    this.router.navigate(['configuration', { group: groupName }]);
+  }
+
   deleteGroupClicked(groupName: string): void {
     const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
       width: '550px',

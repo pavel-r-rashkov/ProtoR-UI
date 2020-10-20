@@ -15,8 +15,9 @@ export class GroupListComponent implements OnInit {
   @Input() pagedItems: PagedGrid<GroupListItem> = new PagedGrid<GroupListItem>();
   @Output() stateChange: EventEmitter<GridState> = new EventEmitter<GridState>();
   @Output() viewSchemasClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() viewConfigurationClick: EventEmitter<string> = new EventEmitter<string>();
   @Output() deleteClick: EventEmitter<string> = new EventEmitter<string>();
-  displayedColumns: string[] = ['name', 'createdOn', 'createdBy', 'viewSchemas', 'delete'];
+  displayedColumns: string[] = ['name', 'createdOn', 'createdBy', 'viewSchemas', 'viewConfiguration', 'delete'];
   isLoading: boolean = true;
   fakeItems: PagedGrid<GroupListItem> = generateFakeItems<GroupListItem>();
   currentState: GridState = this.initialState();
@@ -60,6 +61,10 @@ export class GroupListComponent implements OnInit {
 
   viewSchemasClicked(groupName: string): void {
     this.viewSchemasClick.emit(groupName);
+  }
+
+  viewConfigurationClicked(groupName: string): void {
+    this.viewConfigurationClick.emit(groupName);
   }
 
   deleteGroupClicked(groupName: string): void {

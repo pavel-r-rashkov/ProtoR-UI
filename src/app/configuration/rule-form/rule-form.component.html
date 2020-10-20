@@ -1,0 +1,14 @@
+<div [formGroup]="form" class="rule-form">
+  <span class="rule-code">{{ ruleCode }}</span>
+  <!--Description-->
+  <span class="rule-description">{{ description }}</span>
+  <!--Severity-->
+  <mat-radio-group formControlName="severity" aria-label="Severity">
+    <mat-radio-button [value]="convertSeverity(1)">Hidden</mat-radio-button>
+    <mat-radio-button [value]="convertSeverity(2)">Info</mat-radio-button>
+    <mat-radio-button [value]="convertSeverity(3)">Warning</mat-radio-button>
+    <mat-radio-button [value]="convertSeverity(4)">Error</mat-radio-button>
+  </mat-radio-group>
+  <!--Inherit-->
+  <mat-checkbox formControlName="inherit" *ngIf="inheritsFrom">Inherit</mat-checkbox>
+</div>

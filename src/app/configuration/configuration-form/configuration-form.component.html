@@ -1,0 +1,32 @@
+<div [formGroup]="form">
+  <!--Transitive-->
+  <div class="form-row">
+    <mat-checkbox formControlName="transitive">Transitive</mat-checkbox>
+    <mat-error appValidationMessage></mat-error>
+  </div>
+  <!--Backward compatible-->
+  <div class="form-row">
+    <mat-checkbox formControlName="backwardCompatible">Backward compatible</mat-checkbox>
+    <mat-error appValidationMessage></mat-error>
+  </div>
+  <!--Forward compatible-->
+  <div class="form-row">
+    <mat-checkbox formControlName="forwardCompatible">Forward compatible</mat-checkbox>
+    <mat-error appValidationMessage></mat-error>
+  </div>
+  <!--Inherit-->
+  <div class="form-row" *ngIf="inheritsFrom">
+    <mat-checkbox formControlName="inherit">Inherit</mat-checkbox>
+    <mat-error appValidationMessage></mat-error>
+  </div>
+  <mat-divider></mat-divider>
+  <!--Rules-->
+  <div class="rules-configuration">
+    <div *ngFor="let control of rulesForm.controls; index as i" class="form-row">
+      <app-rule-form
+        [formControl]="toFormControl(control)"
+        [inheritsFrom]="inheritsFrom ? inheritsFrom.ruleConfigurations[i] : undefined">
+      </app-rule-form>
+    </div>
+  </div>
+</div>

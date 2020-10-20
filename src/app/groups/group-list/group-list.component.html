@@ -31,6 +31,14 @@
     </td>
   </ng-container>
 
+  <!--View configuration-->
+  <ng-container matColumnDef="viewConfiguration">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="viewConfigurationClicked(element.name)">Configuration</button>
+    </td>
+  </ng-container>
+
   <!-- View schemas -->
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef></th>
