@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 import { SchemasRoutingModule } from './schemas-routing.module';
@@ -41,6 +42,7 @@ import { monacoConfig } from './editor-config';
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     MonacoEditorModule.forRoot(monacoConfig),
   ]
 })

@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 import { GroupsRoutingModule } from './groups-routing.module';
 import { SharedModule } from '@shared';
@@ -37,6 +38,7 @@ import { CreateGroupPopupComponent } from './create-group-popup/create-group-pop
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     GroupsRoutingModule,
   ]
 })

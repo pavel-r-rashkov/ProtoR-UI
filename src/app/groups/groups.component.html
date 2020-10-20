@@ -1,15 +1,16 @@
-<button
-  mat-raised-button
-  color="primary"
-  (click)="openGroupDialog()"
->
-  New Group
-</button>
-
-<app-group-list
-  [pagedItems]="pagedItems"
-  (stateChange)="gridStateChanged($event)"
-  (viewSchemasClick)="viewSchemas($event)"
-  (viewConfigurationClick)="viewConfiguration($event)"
-  (deleteClick)="deleteGroupClicked($event)">
-</app-group-list>
+<mat-card>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openGroupDialog()"
+  >
+    New Group
+  </button>
+  <app-group-list
+    [pagedItems]="pagedItems"
+    (stateChange)="gridStateChanged($event)"
+    (viewSchemasClick)="viewSchemas($event)"
+    (viewConfigurationClick)="viewConfiguration($event)"
+    (deleteClick)="deleteGroupClicked($event)">
+  </app-group-list>
+</mat-card>

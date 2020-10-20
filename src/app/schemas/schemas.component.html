@@ -1,13 +1,14 @@
-<button
-  mat-raised-button
-  color="primary"
-  (click)="openCreateSchemaDialog()"
->
-  New Schema
-</button>
-
-<app-schema-list
-  [pagedItems]="pagedItems"
-  (stateChange)="gridStateChanged($event)"
-  (viewSchemaClick)="viewSchema($event)">
-</app-schema-list>
+<mat-card>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openCreateSchemaDialog()"
+  >
+    New Schema
+  </button>
+  <app-schema-list
+    [pagedItems]="pagedItems"
+    (stateChange)="gridStateChanged($event)"
+    (viewSchemaClick)="viewSchema($event)">
+  </app-schema-list>
+</mat-card>
