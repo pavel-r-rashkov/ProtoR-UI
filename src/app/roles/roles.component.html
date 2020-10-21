@@ -9,6 +9,7 @@
   <app-role-list
     [pagedItems]="pagedItems"
     (stateChange)="gridStateChanged($event)"
-    (editRoleClick)="openUpdateRoleDialog($event)">
+    (editRoleClick)="openUpdateRoleDialog($event)"
+    (deleteRoleClick)="deleteRoleClicked($event)">
   </app-role-list>
 </mat-card>

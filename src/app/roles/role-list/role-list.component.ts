@@ -15,7 +15,8 @@ export class RoleListComponent implements OnInit {
   @Input() pagedItems: PagedGrid<RoleListItem> = new PagedGrid<RoleListItem>();
   @Output() stateChange: EventEmitter<GridState> = new EventEmitter<GridState>();
   @Output() editRoleClick: EventEmitter<RoleListItem> = new EventEmitter<RoleListItem>();
-  displayedColumns: string[] = ['name', 'createdOn', 'createdBy', 'editRole'];
+  @Output() deleteRoleClick: EventEmitter<RoleListItem> = new EventEmitter<RoleListItem>();
+  displayedColumns: string[] = ['name', 'createdOn', 'createdBy', 'editRole', 'deleteRole'];
   isLoading: boolean = true;
   fakeItems: PagedGrid<RoleListItem> = generateFakeItems<RoleListItem>();
   currentState: GridState = this.initialState();
@@ -59,6 +60,10 @@ export class RoleListComponent implements OnInit {
 
   editRoleClicked(item: RoleListItem): void {
     this.editRoleClick.emit(item);
+  }
+
+  deleteRoleClicked(item: RoleListItem): void {
+    this.deleteRoleClick.emit(item);
   }
 
   resetGrid(): void {

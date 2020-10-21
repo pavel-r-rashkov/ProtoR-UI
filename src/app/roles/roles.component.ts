@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
-import { PagedGrid, GridState } from '@shared';
+import { PagedGrid, GridState, ConfirmationPopupComponent } from '@shared';
 import { RolesService, PagedResult, Role, Permission, PermissionsService } from '@core';
 import { RoleListComponent } from './role-list/role-list.component';
 import { RoleListItem } from './role-list/role-list-item';
@@ -106,6 +106,22 @@ export class RolesComponent implements OnInit, OnDestroy {
     this.subscriptions.add(dialogSubscription);
   }
 
+  deleteRoleClicked(role: RoleListItem): void {
+    const dialogRef = this.dialog.open(ConfirmationPopupComponent, {
+      width: '550px',
+    });
+
+    const subscription = dialogRef
+      .afterClosed()
+      .subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.deleteRole(role.id);
+        }
+      });
+
+    this.subscriptions.add(subscription);
+  }
+
   private loadRoles(state: GridState): void {
     const subscription = this.rolesService
       .getRoles(state)
@@ -123,6 +139,21 @@ export class RolesComponent implements OnInit, OnDestroy {
       .subscribe((permissions: Permission[]) => {
         this.permissions = permissions;
       });
+
+    this.subscriptions.add(subscription);
+  }
+
+  private deleteRole(id: number): void {
+    const subscription = this.rolesService
+      .deleteRole(id)
+      .subscribe(
+        () => {
+          this.roleList?.resetGrid();
+          this.snackBar.open('Role deleted', '', { duration: 2000 });
+        },
+        () => {
+          this.snackBar.open('An error occured while deleting a role', '', { duration: 2000 });
+        });
 
     this.subscriptions.add(subscription);
   }
