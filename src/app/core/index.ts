@@ -5,3 +5,8 @@ export * from './schemas-service/schemas.service';
 export * from './models/schema';
 export * from './configuration-service/configuration.service';
 export * from './models/configuration';
+export * from './roles-service/roles.service';
+export * from './models/role';
+export * from './models/modify-role';
+export * from './permissions-service/permissions.service';
+export * from './models/permission';

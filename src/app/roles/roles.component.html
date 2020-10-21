@@ -1,1 +1,14 @@
-<p>roles works!</p>
+<mat-card>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openCreateRoleDialog()"
+  >
+    New Role
+  </button>
+  <app-role-list
+    [pagedItems]="pagedItems"
+    (stateChange)="gridStateChanged($event)"
+    (editRoleClick)="openUpdateRoleDialog($event)">
+  </app-role-list>
+</mat-card>

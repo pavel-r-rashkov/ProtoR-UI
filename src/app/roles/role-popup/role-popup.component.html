@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ isNewRole ? 'Add' : 'Edit' }} role</h1>
+<div class="mat-dialog-content">
+  <app-role-form
+    [formControl]="roleForm"
+    [permissions]="permissions">
+  </app-role-form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="submitForm()"
+    [disabled]="submitDisabled || roleForm.invalid"
+  >
+    {{ isNewRole ? 'Create' : 'Update' }}
+  </button>
+</div>

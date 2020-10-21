@@ -6,3 +6,4 @@ export * from './grid/grid-state';
 export * from './validation/messages';
 export * from './shared.module';
 export * from './confirmation-popup/confirmation-popup.component';
+export * from './select-item';
