@@ -36,7 +36,16 @@ $protor-ui-theme: mat-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  mat-icon {
+    font-family: 'Material Icons';
+  }
+}
+
+
 
 // Grid skeleton
 .loading {
@@ -67,4 +76,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // Dialog
 .overflow-dialog .mat-dialog-container {
   overflow: visible;
+}
+
+// Chip input
+.mat-form-field-type-chip-input {
+  .mat-form-field-infix {
+    border-top: 0px;
+  }
+
+  .mat-form-field-label-wrapper {
+    margin-top: 12px;
+  }
+
+  .mat-chip.mat-standard-chip {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }

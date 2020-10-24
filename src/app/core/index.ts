@@ -10,3 +10,6 @@ export * from './models/role';
 export * from './models/modify-role';
 export * from './permissions-service/permissions.service';
 export * from './models/permission';
+export * from './clients-service/clients.service';
+export * from './models/client';
+export * from './models/modify-client';

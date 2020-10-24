@@ -1,1 +1,15 @@
-<p>clients works!</p>
+<mat-card>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openCreateClientDialog()"
+  >
+    New Client
+  </button>
+  <app-client-list
+    [pagedItems]="pagedItems"
+    (stateChange)="gridStateChanged($event)"
+    (editClientClick)="openUpdateClientDialog($event)"
+    (deleteClientClick)="deleteClientClicked($event)">
+  </app-client-list>
+</mat-card>

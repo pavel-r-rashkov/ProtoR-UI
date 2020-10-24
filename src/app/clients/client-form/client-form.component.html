@@ -1,0 +1,45 @@
+<ng-container [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Client ID</mat-label>
+    <input matInput formControlName="clientId">
+    <mat-error appValidationMessage></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Client name</mat-label>
+    <input matInput formControlName="clientName">
+    <mat-error appValidationMessage></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Secret</mat-label>
+    <input matInput formControlName="secret">
+    <mat-error appValidationMessage></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Grant types</mat-label>
+    <mat-select formControlName="grantTypes" multiple>
+      <mat-select-trigger>
+        <span matTooltip="{{ grantTypesDisplayText }}">{{ grantTypesDisplayText }}</span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let grantType of grantTypes" [value]="grantType.id">{{ grantType.displayName }}</mat-option>
+    </mat-select>
+    <mat-error appValidationMessage></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Redirect URIs</mat-label>
+    <app-chip-input formControlName="redirectUris" [validators]="uriValidator"></app-chip-input>
+    <mat-error appValidationMessage></mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Post logout redirect URIs</mat-label>
+    <app-chip-input formControlName="postLogoutRedirectUris"></app-chip-input>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Allowed CORS origins</mat-label>
+    <app-chip-input formControlName="allowedCorsOrigins"></app-chip-input>
+  </mat-form-field>
+  <!--groups-->
+  <!--roles-->
+  <div class="active-form-row">
+    <mat-checkbox formControlName="isActive">Active</mat-checkbox>
+  </div>
+</ng-container>

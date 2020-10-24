@@ -30,6 +30,7 @@ export class ValidationMessageComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     const container = this.injector.get(MatFormField);
     this.inputRef = container._control;
+
     const subscription = this.inputRef.ngControl?.statusChanges?.subscribe((state) => this.updateErrors(state));
     this.subscriptions.add(subscription);
   }
@@ -54,6 +55,11 @@ export class ValidationMessageComponent implements AfterViewInit, OnDestroy {
     }
 
     const controlMessages = this.messages[this.inputRef.ngControl.name];
+
+    if (!controlMessages) {
+      return;
+    }
+
     const firstErrorKey = Object.keys(this.inputRef.ngControl.errors)[0];
     const firstError = this.inputRef.ngControl.errors[firstErrorKey];
 

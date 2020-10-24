@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{ isNewClient ? 'Add' : 'Edit' }} client</h1>
+<div class="mat-dialog-content">
+  <app-client-form
+    [formControl]="clientForm">
+  </app-client-form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="submitForm()"
+    [disabled]="submitDisabled || clientForm.invalid"
+  >
+    {{ isNewClient ? 'Create' : 'Update' }}
+  </button>
+</div>
